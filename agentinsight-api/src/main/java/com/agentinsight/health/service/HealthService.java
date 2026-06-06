@@ -19,8 +19,8 @@ public class HealthService {
 
     public HealthResponse health() {
         Map<String, String> checks = new LinkedHashMap<>();
-        checks.put("codexSource", readableDirectory(properties.codexSourcePath()));
-        checks.put("lensData", writableDirectory(properties.lensDataPath()));
+        checks.put("codexProviderSource", readableDirectory(properties.codexSourcePath()));
+        checks.put("agentInsightData", writableDirectory(properties.dataPath()));
         checks.put("database", databaseOpenable(properties.databasePath()));
 
         String status = checks.values().stream().allMatch("OK"::equals) ? "UP" : "DOWN";

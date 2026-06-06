@@ -65,8 +65,8 @@ class CodexAgentProviderTest {
     private AgentInsightProperties properties(Path codexHome) {
         return new AgentInsightProperties(
             codexHome,
-            tempDir.resolve("lens-data"),
-            tempDir.resolve("lens-data/agentinsight.sqlite")
+            tempDir.resolve("agentinsight-data"),
+            tempDir.resolve("agentinsight-data/agentinsight.sqlite")
         );
     }
 

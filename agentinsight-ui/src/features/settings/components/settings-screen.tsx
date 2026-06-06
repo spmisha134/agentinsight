@@ -40,7 +40,7 @@ export function SettingsScreen({ activeProvider, providers, onProviderChanged }:
   const sections = [
     {
       title: 'Source',
-      description: 'Codex data is read locally. AgentInsight never writes to Codex-owned files.',
+      description: 'Provider data is read locally. AgentInsight never writes to provider-owned files.',
       rows: [
         ['Active provider', activeProvider.displayName],
         ['Home path', activeProvider.homePath],
@@ -81,7 +81,7 @@ export function SettingsScreen({ activeProvider, providers, onProviderChanged }:
       rows: [
         ['Telemetry', 'Disabled'],
         ['External links', 'Disabled by default'],
-        ['Local file writes', 'Lens database only'],
+        ['Local file writes', 'AgentInsight database only'],
       ],
     },
   ];

@@ -21,7 +21,7 @@ export function LiveScreen({ liveUsage }: { liveUsage: LiveUsageSummary | null }
           {liveUsage.warnings.length > 0 && <span>{liveUsage.warnings.length} warning types</span>}
         </div>
         {liveUsage.sessions.length === 0 ? (
-          <div className="empty">No local Codex sessions are visible yet.</div>
+          <div className="empty">No local provider sessions are visible yet.</div>
         ) : (
           <div className="table live-table">
             <div className="row header"><span>Status</span><span>Title</span><span>Repo</span><span>Model</span><span>Freshness</span><span>Data</span></div>

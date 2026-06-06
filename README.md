@@ -1,8 +1,8 @@
 # AgentInsight
 
-Production-ready local analytics dashboard for OpenAI Codex CLI usage.
+Production-ready local observability and analytics for AI coding assistants.
 
-It reads local Codex data from the path configured in `.env`:
+It reads local provider data from paths configured in `.env`. For the Codex provider, configure `AGENTINSIGHT_CODEX_HOME` to a local Codex home directory containing:
 
 - `state_*.sqlite` for thread/session metadata
 - `sessions/**/*.jsonl` for events, token usage, tool calls, and transcript data
@@ -81,6 +81,17 @@ npm run preview
 ## Local Environment
 
 Runtime paths and ports live in the root `.env` file. The file is ignored by Git and must not be committed.
+
+Expected variables:
+
+```text
+AGENTINSIGHT_CODEX_HOME=/path/to/.codex
+AGENTINSIGHT_DATA_PATH=/path/to/.agentinsight
+AGENTINSIGHT_DB_PATH=/path/to/.agentinsight/agentinsight.db
+AGENTINSIGHT_API_PORT=8081
+AGENTINSIGHT_UI_PORT=5173
+SERVER_PORT=8081
+```
 
 Direct backend dev mode uses the Gradle wrapper. Gradle 9.5.1 is required because the project runs with Java 25:
 

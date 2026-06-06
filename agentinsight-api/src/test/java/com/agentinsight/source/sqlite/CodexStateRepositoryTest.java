@@ -24,8 +24,8 @@ class CodexStateRepositoryTest {
 
         CodexStateRepository repository = new CodexStateRepository(new AgentInsightProperties(
             codexSource,
-            tempDir.resolve("lens-data"),
-            tempDir.resolve("lens-data/agentinsight.sqlite")
+            tempDir.resolve("agentinsight-data"),
+            tempDir.resolve("agentinsight-data/agentinsight.sqlite")
         ));
 
         var threads = repository.findThreads();

@@ -6,6 +6,6 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties(prefix = "agentinsight")
 public record AgentInsightProperties(
     Path codexSourcePath,
-    Path lensDataPath,
+    Path dataPath,
     Path databasePath
 ) {}

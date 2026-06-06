@@ -1,29 +1,33 @@
 name: agentinsight
 
 services:
-  api:
+  agentinsight-backend:
     build: ./agentinsight-api
+    image: agentinsight-backend
+    container_name: agentinsight-backend
     ports:
-      - "${AGENTINSIGHT_API_PORT}:8081"
+      - "${AGENTINSIGHT_API_PORT:-8081}:8081"
     environment:
-      CODEX_SOURCE_PATH: ${AGENTINSIGHT_DOCKER_CODEX_SOURCE_PATH}
-      AGENTINSIGHT_DATA_PATH: ${AGENTINSIGHT_DOCKER_DATA_PATH}
-      AGENTINSIGHT_DB_PATH: ${AGENTINSIGHT_DOCKER_DB_PATH}
-      SERVER_PORT: ${SERVER_PORT}
+      AGENTINSIGHT_CODEX_HOME: /codex
+      AGENTINSIGHT_DATA_PATH: /data
+      AGENTINSIGHT_DB_PATH: /data/agentinsight.db
+      SERVER_PORT: ${SERVER_PORT:-8081}
     volumes:
-      - ${CODEX_SOURCE_PATH}:${AGENTINSIGHT_DOCKER_CODEX_SOURCE_PATH}:ro
-      - agentinsight-data:${AGENTINSIGHT_DOCKER_DATA_PATH}
+      - ${AGENTINSIGHT_CODEX_HOME:-${HOME}/.codex}:/codex:ro
+      - agentinsight-data:/data
     healthcheck:
       test: ["CMD-SHELL", "curl -fsS http://localhost:8081/api/health >/dev/null || exit 1"]
       interval: 10s
       timeout: 5s
       retries: 5
-  web:
+  agentinsight-ui:
     build: ./agentinsight-ui
+    image: agentinsight-ui
+    container_name: agentinsight-ui
     ports:
-      - "${AGENTINSIGHT_UI_PORT}:80"
+      - "${AGENTINSIGHT_UI_PORT:-5173}:80"
     depends_on:
-      api:
+      agentinsight-backend:
         condition: service_healthy
     healthcheck:
       test: ["CMD-SHELL", "wget -qO- http://localhost/ >/dev/null || exit 1"]
@@ -32,3 +36,7 @@ services:
       retries: 5
 volumes:
   agentinsight-data:
+
+networks:
+  default:
+    name: agentinsight-network
