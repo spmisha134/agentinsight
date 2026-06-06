@@ -1,0 +1,34 @@
+name: agentinsight
+
+services:
+  api:
+    build: ./agentinsight-api
+    ports:
+      - "${AGENTINSIGHT_API_PORT}:8081"
+    environment:
+      CODEX_SOURCE_PATH: ${AGENTINSIGHT_DOCKER_CODEX_SOURCE_PATH}
+      AGENTINSIGHT_DATA_PATH: ${AGENTINSIGHT_DOCKER_DATA_PATH}
+      AGENTINSIGHT_DB_PATH: ${AGENTINSIGHT_DOCKER_DB_PATH}
+      SERVER_PORT: ${SERVER_PORT}
+    volumes:
+      - ${CODEX_SOURCE_PATH}:${AGENTINSIGHT_DOCKER_CODEX_SOURCE_PATH}:ro
+      - agentinsight-data:${AGENTINSIGHT_DOCKER_DATA_PATH}
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://localhost:8081/api/health >/dev/null || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+  web:
+    build: ./agentinsight-ui
+    ports:
+      - "${AGENTINSIGHT_UI_PORT}:80"
+    depends_on:
+      api:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://localhost/ >/dev/null || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+volumes:
+  agentinsight-data:

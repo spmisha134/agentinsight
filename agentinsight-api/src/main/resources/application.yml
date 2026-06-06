@@ -1,0 +1,11 @@
+spring:
+  config:
+    import: optional:classpath:pricing.yml
+
+server:
+  port: ${SERVER_PORT:8081}
+
+agentinsight:
+  codex-source-path: ${CODEX_SOURCE_PATH}
+  lens-data-path: ${AGENTINSIGHT_DATA_PATH}
+  database-path: ${AGENTINSIGHT_DB_PATH:${AGENTINSIGHT_DB}}

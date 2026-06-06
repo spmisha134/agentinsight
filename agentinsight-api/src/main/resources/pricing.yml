@@ -1,0 +1,14 @@
+pricing:
+  models:
+    gpt-5:
+      inputPerMillion: 1.25
+      cachedInputPerMillion: 0.125
+      outputPerMillion: 10.0
+    gpt-5.2-codex:
+      inputPerMillion: 1.25
+      cachedInputPerMillion: 0.125
+      outputPerMillion: 10.0
+    default:
+      inputPerMillion: 1.25
+      cachedInputPerMillion: 0.125
+      outputPerMillion: 10.0

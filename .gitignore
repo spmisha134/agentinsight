@@ -1,0 +1,48 @@
+# Publish only the AgentInsight API and UI source.
+/*
+!/.gitignore
+!/README.md
+!/docker-compose.yml
+!/agentinsight-api/
+!/agentinsight-api/**
+!/agentinsight-ui/
+!/agentinsight-ui/**
+
+# OS files
+.DS_Store
+**/.DS_Store
+
+# Local editor state
+**/.idea/
+**/.vscode/
+*.code-workspace
+
+# Logs
+*.log
+**/*.log
+
+# Environment and local secrets
+**/.env
+**/.env.*
+!**/.env.example
+
+# Codex/session imports must remain local and read-only.
+**/history.jsonl
+**/sessions/
+!agentinsight-ui/src/features/sessions/
+!agentinsight-ui/src/features/sessions/**
+**/state_*.sqlite
+**/*.sqlite
+**/*.sqlite-shm
+**/*.sqlite-wal
+
+# Java / Gradle generated files
+agentinsight-api/.gradle/
+agentinsight-api/build/
+agentinsight-api/out/
+
+# Frontend generated files
+agentinsight-ui/node_modules/
+agentinsight-ui/dist/
+agentinsight-ui/.vite/
+agentinsight-ui/coverage/
