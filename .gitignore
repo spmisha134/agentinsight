@@ -4,6 +4,7 @@
 !/README.md
 !/GEMINI.md
 !/AGENTS.md
+!/assets/
 !/docker-compose.yml
 !/agentinsight-api/
 !/agentinsight-api/**

@@ -2,6 +2,26 @@
 
 Production-ready local observability and analytics for AI coding assistants.
 
+![Dashboard Preview](assets/images/dashboard.png)
+
+## Preview
+
+<p align="center">
+  <img src="assets/images/context-memory.png" width="45%" alt="Context Memory" />
+  <img src="assets/images/session-replay.png" width="45%" alt="Session Replay" />
+</p>
+<p align="center">
+  <img src="assets/images/cache-performance.png" width="45%" alt="Cache Performance" />
+  <img src="assets/images/tool-analytics.png" width="45%" alt="Tool Analytics" />
+</p>
+<p align="center">
+  <img src="assets/images/usage-optimization.png" width="45%" alt="Usage Optimization" />
+  <img src="assets/images/repository-analytics.png" width="45%" alt="Repository Analytics" />
+</p>
+<p align="center">
+  <img src="assets/images/settings.png" width="45%" alt="Settings" />
+</p>
+
 It reads local provider data from paths configured in `.env`. For the Codex provider, configure `AGENTINSIGHT_CODEX_HOME` to a local Codex home directory containing:
 
 - `state_*.sqlite` for thread/session metadata
@@ -105,14 +125,18 @@ set +a
 
 ## Features
 
-- Dashboard overview
-- Session explorer
-- Repository analytics
-- Model analytics
-- Cost estimation
-- Cached token savings
-- JSONL rollout parser
-- Local-only design
+- **Dashboard Overview**: High-level metrics for sessions, costs, and token usage.
+- **Session Explorer & Replay**: Navigate through history with full rollout transcript replays.
+- **Live Usage Tracking**: Real-time monitoring of active agent sessions and events.
+- **Cost Estimation**: Accurate cost tracking derived from local token events.
+- **Token Optimization**: Analytics for cached token savings and context efficiency.
+- **Analytics Suites**:
+    - **Command Analytics**: Insight into the most frequent and impactful agent commands.
+    - **Tool Analytics**: Performance and usage patterns of integrated agent tools.
+    - **Context Memory**: Analysis of how much context is being used and retained.
+    - **Model & Repository Analytics**: breakdown of usage by specific models and projects.
+- **JSONL Rollout Parser**: High-performance streaming parser for local provider logs.
+- **Local-Only Design**: Privacy-first architecture that processes data entirely on your machine.
 
 ## Cost Accuracy
 
